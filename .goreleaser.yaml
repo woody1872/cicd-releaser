@@ -1,0 +1,31 @@
+project_name: otelcol-custom-test
+builds:
+  - id: otelcol-custom-test
+    goos:
+      - linux
+    goarch:
+      - amd64
+    dir: otelcol-custom-test/ocb
+    binary: bin/otelcol-custom-test
+    ldflags:
+      - -s
+      - -w
+nfpms:
+  - id: otelcol-custom-test-rpm
+    package_name: otelcol-custom-test
+    contents:
+      - src: bin/otelcol-custom-test
+        dst: /usr/local/bin/otelcol-custom-test
+    scripts:
+      preinstall: distributions/otelcol-custom-test/preinstall.sh
+      postinstall: distributions/otelcol-custom-test/postinstall.sh
+      preremove: distributions/otelcol-custom-test/preremove.sh
+    builds:
+      - otelcol-custom-test
+    formats:
+      - rpm
+    maintainer: sam wood testing only
+    description: otelcol-custom-test
+    license: Apache 2.0
+checksum:
+  name_template: "{{ .ProjectName }}_checksums.txt"
