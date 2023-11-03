@@ -17,9 +17,9 @@ nfpms:
       - src: dist/otelcol-custom-test_linux_amd64_v1/bin
         dst: /usr/local/bin/otelcol-custom-test
     scripts:
-      preinstall: distributions/otelcol-custom-test/preinstall.sh
-      postinstall: distributions/otelcol-custom-test/postinstall.sh
-      preremove: distributions/otelcol-custom-test/preremove.sh
+      preinstall: otelcol-custom-test/scripts/preinstall.sh
+      postinstall: otelcol-custom-test/scripts/postinstall.sh
+      preremove: otelcol-custom-test/scripts/preremove.sh
     builds:
       - otelcol-custom-test
     formats:
